@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block content %}
+<div class="content">
+	<form method="post" class="chat-form">
+		<h2>Welcome to the Chat Room!</h2>
+		<div class="input-group">
+			<label for="name">Name:</label>
+			<input type="text" id="name" placeholder="Pick a name!" name="name" value="{{name}}" />
+		</div>
+		<div class="input-group">
+			<label for="code">Room Code:</label>
+			<input type="text" id="code" placeholder="Enter Room Code" name="code" value="{{code}}" />
+		</div>
+		<div class="button-group">
+			<button type="submit" name="join" class="join-btn">Join Room</button>
+			<button type="submit" name="create" class="create-btn">Create Room</button>
+		</div>
+		{% if error %}
+		<div class="error-message">{{ error }}</div>
+		{% endif %}
+	</form>
+</div>
+<style>
+	.content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+	}
+
+	.chat-form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+		max-width: 400px;
+		padding: 20px;
+		border: 2px solid #ddd;
+		border-radius: 10px;
+		background-color: #f9f9f9;
+	}
+
+	.input-group {
+		width: 100%;
+	}
+
+	.input-group label {
+		display: flex;
+		margin-bottom: 5px;
+	}
+
+	.input-group input {
+		width: 100%;
+		padding: 8px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding-right: 8px;
+	}
+
+	.button-group {
+		display: flex;
+		gap: 10px;
+	}
+
+	.join-btn,
+	.create-btn {
+		flex: 1;
+		padding: 10px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		background-color: #2e67a9;
+		color: white;
+		font-size: 16px;
+	}
+
+	.error-message {
+		color: #2e67a9;
+		margin-top: 10px;
+		text-align: center;
+	}
+</style>
+{% endblock %}
